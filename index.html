@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Navigation Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <style>
+        .menu-hidden {
+            transform: translateX(-100%);
+        }
+        .menu-visible {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-white shadow-md fixed w-full z-10">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="text-xl font-bold">MyApp</div>
+            <div class="lg:hidden">
+                <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars fa-2x"></i>
+                </button>
+            </div>
+            <nav class="hidden lg:flex space-x-4">
+                <a href="#" class="text-gray-700 hover:text-blue-500">Home</a>
+                <a href="#" class="text-gray-700 hover:text-blue-500">About</a>
+                <a href="#" class="text-gray-700 hover:text-blue-500">Services</a>
+                <a href="#" class="text-gray-700 hover:text-blue-500">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-gray-800 bg-opacity-75 z-20 menu-hidden transition-transform duration-300 ease-in-out lg:hidden">
+        <div class="bg-white w-64 h-full shadow-md p-4">
+            <button id="menu-close" class="text-gray-700 focus:outline-none mb-4">
+                <i class="fas fa-times fa-2x"></i>
+            </button>
+            <nav class="space-y-4">
+                <a href="#" class="block text-gray-700 hover:text-blue-500">Home</a>
+                <a href="#" class="block text-gray-700 hover:text-blue-500">About</a>
+                <a href="#" class="block text-gray-700 hover:text-blue-500">Services</a>
+                <a href="#" class="block text-gray-700 hover:text-blue-500">Contact</a>
+            </nav>
+        </div>
+    </div>
+
+    <main class="pt-20">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl font-bold mb-4">Welcome to MyApp</h1>
+            <p class="text-gray-700">This is a sample application to demonstrate a custom navigation menu with Tailwind CSS.</p>
+        </div>
+    </main>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.remove('menu-hidden');
+            mobileMenu.classList.add('menu-visible');
+        });
+
+        menuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('menu-visible');
+            mobileMenu.classList.add('menu-hidden');
+        });
+    </script>
+</body>
+</html>
